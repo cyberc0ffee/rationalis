@@ -28,7 +28,7 @@ Il codice è multipiattaforma; l'app per Mac va però costruita su un Mac (PyIns
 incrociata). Partire da `dist/Rationalis-<versione>-sorgente.zip` (creato con `tools_build/make_source_zip.py`):
 - **solo usarlo**: doppio clic su `Avvia Rationalis.command` (al primo avvio crea `.venv` e installa le librerie;
   serve Python 3.11+ da python.org);
-- **creare l'app**: `python3 -m pip install -r requirements.txt pyinstaller pillow` e poi
+- **creare l'app**: `python3 -m pip install --only-binary=cryptography -r requirements.txt pyinstaller pillow` e poi
   `python3 tools_build/build_portable.py` → `dist/Rationalis.app`, `.dmg` e `.zip` (architettura del Mac usato:
   arm64 su Apple Silicon, x86_64 su Intel);
 - **senza Mac**: il flusso `.github/workflows/build.yml` costruisce su GitHub Actions le versioni macOS arm64,
