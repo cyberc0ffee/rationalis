@@ -15,7 +15,7 @@ jobs:
       matrix:
         include:
           - os: macos-14        # Apple Silicon (arm64)
-          - os: macos-13        # Intel (x86_64)
+          - os: macos-15-intel  # Intel (x86_64)
           - os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
