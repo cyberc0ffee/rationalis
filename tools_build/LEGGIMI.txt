@@ -1,0 +1,32 @@
+RATIONALIS 1.0 - versione portabile per Windows (64 bit)
+==========================================================
+
+Non serve installare nulla: Python e tutte le librerie sono già dentro questa cartella.
+
+AVVIO
+  Doppio clic su Rationalis.exe.
+  Tenere Rationalis.exe insieme alla cartella _internal: senza _internal il programma non parte.
+
+DOVE FINISCONO I DATI
+  Normale:
+    archivi (.rtl)             Documenti\Rationalis\archivi
+    copie di sicurezza (.rtz)  Documenti\Rationalis\copie
+    impostazioni               registro di Windows dell'utente (HKCU\Software\Rationalis)
+
+  Modalità chiavetta: creare in questa cartella un file vuoto chiamato PORTABILE.txt.
+    Archivi, copie e impostazioni vanno allora in Dati\ accanto a Rationalis.exe e sul PC
+    ospite non resta nulla. In questo caso la cartella deve essere scrivibile (non usarla
+    dentro "C:\Programmi").
+
+PRIMO AVVIO SU UN ALTRO PC
+  Windows SmartScreen può avvisare che l'app è "non riconosciuta" perché l'eseguibile non è
+  firmato digitalmente: "Ulteriori informazioni" > "Esegui comunque".
+
+PORTARE I DATI DA UN PC ALL'ALTRO
+  File > Copia di sicurezza sul primo PC, poi File > Ripristina copia di sicurezza sull'altro
+  (oppure copiare direttamente il file .rtl). Gli archivi protetti da codice d'accesso
+  restano cifrati anche nelle copie.
+
+VERIFICA DI FUNZIONAMENTO (facoltativa)
+  Rationalis.exe --prova-avvio C:\cartella\vuota
+  scrive l'esito in C:\cartella\vuota\esito.txt senza toccare impostazioni e archivi.

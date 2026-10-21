@@ -1,0 +1,36 @@
+RATIONALIS 1.0 per macOS
+========================
+
+INSTALLAZIONE
+  Trascinare Rationalis.app nella cartella Applicazioni (oppure tenerla dove si vuole: non serve
+  installare altro, Python e librerie sono già dentro l'app).
+
+PRIMO AVVIO (app non firmata da Apple)
+  macOS blocca le app scaricate che non sono firmate e autenticate da Apple. La prima volta:
+    - clic destro (o Ctrl+clic) su Rationalis.app > Apri > Apri
+    - se non basta (macOS 15 e successivi): Impostazioni di Sistema > Privacy e sicurezza >
+      in fondo «Rationalis è stata bloccata» > Apri comunque
+    - in alternativa, da Terminale:  xattr -dr com.apple.quarantine /Applications/Rationalis.app
+  Dalla seconda volta si apre normalmente.
+
+ARCHITETTURA
+  Il nome del file indica per quale Mac è stato costruito: «arm64» = Apple Silicon (M1, M2, M3, M4…),
+  «x86_64» = Mac con processore Intel. Una versione arm64 non parte sui Mac Intel e viceversa
+  (una versione x86_64 funziona sui Mac Apple Silicon tramite Rosetta, un po' più lenta).
+
+DOVE FINISCONO I DATI
+  archivi (.rtl)             Documenti/Rationalis/archivi
+  copie di sicurezza (.rtz)  Documenti/Rationalis/copie
+  impostazioni               ~/Library/Preferences (preferenze dell'utente)
+
+  Modalità chiavetta: mettere un file vuoto PORTABILE.txt nella stessa cartella di Rationalis.app;
+  archivi, copie e impostazioni andranno nella cartella «Rationalis Dati» accanto all'app.
+
+TASTIERA
+  Le scorciatoie indicate con Ctrl nei menu si usano con Cmd (⌘). Esci = Cmd+Q, Impostazioni = Cmd+,
+  I tasti funzione (F2 calcolatrice, F3 saldo, F9 duplica, F12 nuovo movimento) sui portatili Mac
+  si premono insieme a fn, salvo aver scelto «Usa i tasti F1, F2 ecc. come tasti funzione standard»
+  in Impostazioni di Sistema > Tastiera.
+
+PORTARE I DATI DA WINDOWS
+  Gli archivi .rtl e le copie .rtz sono gli stessi file su Windows e su Mac: basta copiarli.
