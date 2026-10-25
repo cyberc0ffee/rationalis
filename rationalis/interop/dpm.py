@@ -1,7 +1,7 @@
 """Importazione di archivi Danea Professional Manager 5 (.dpm) e delle loro copie (.dpz).
 
 Il .dpm è (probabilmente) un database Microsoft Access 97 / Jet 3.5. Struttura dedotta dai soli nomi
-di tabelle e campi (vedi notes/dpm_format.md nel laboratorio): NON ancora verificata su un archivio
+di tabelle e campi, ai soli fini di interoperabilità: NON ancora verificata su un archivio
 reale. Per questo la lettura è tollerante:
 - i nomi di colonna sono cercati senza distinguere maiuscole e con più candidati per campo;
 - i tipi dei gruppi e delle risorse, se non decifrabili, sono dedotti dai movimenti e dai nomi;

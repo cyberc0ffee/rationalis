@@ -781,4 +781,6 @@ class MainWindow(QMainWindow):
     def about(self):
         QMessageBox.about(self, APP_NAME, f"<h3>{APP_NAME} {__version__}</h3>"
                                           "<p>Gestione e analisi finanziaria personale e aziendale.</p>"
-                                          "<p>Importa gli archivi di Danea Professional Manager 5.</p>")
+                                          "<p>Importa gli archivi di Danea Professional Manager 5.</p>"
+                                          "<p>Licenza MIT. Progetto indipendente, non affiliato a Danea Soft "
+                                          "né a TeamSystem; i marchi citati appartengono ai rispettivi titolari.</p>")

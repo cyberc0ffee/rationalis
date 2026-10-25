@@ -1,5 +1,5 @@
 # Crea tests/fixtures/sintetico.dpm: un database Jet 3.x (Access 97) con la struttura DEDOTTA degli
-# archivi DPM 5 (vedi notes/dpm_format.md). Serve solo a provare la lettura del formato Jet 3:
+# archivi DPM 5 (vedi rationalis/interop/dpm.py). Serve solo a provare la lettura del formato Jet 3:
 # i nomi delle colonne non sono verificati su un archivio reale.
 # Va eseguito con PowerShell a 32 bit (il provider Jet OLEDB 4.0 esiste solo a 32 bit):
 #   C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -File make_dpm_fixture.ps1

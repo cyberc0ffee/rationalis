@@ -63,6 +63,8 @@ def self_test():
 def package_windows():
     app_dir = ROOT / "dist" / "Rationalis"
     shutil.copy(ROOT / "tools_build" / "LEGGIMI.txt", app_dir / "LEGGIMI.txt")
+    for f in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+        shutil.copy(ROOT / f, app_dir / f)
     out = ROOT / "dist" / f"Rationalis-{__version__}-portabile-win64.zip"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for f in app_dir.rglob("*"):
@@ -79,6 +81,8 @@ def package_macos():
     # ditto conserva collegamenti simbolici e permessi del pacchetto .app (zipfile no)
     subprocess.run(["ditto", str(ROOT / "dist" / "Rationalis.app"), str(stage / "Rationalis.app")], check=True)
     shutil.copy(ROOT / "tools_build" / "LEGGIMI_macOS.txt", stage / "LEGGIMI.txt")
+    for f in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+        shutil.copy(ROOT / f, stage / f)
     os.symlink("/Applications", stage / "Applicazioni")
     dmg = ROOT / "dist" / f"Rationalis-{__version__}-macos-{arch}.dmg"
     dmg.unlink(missing_ok=True)
