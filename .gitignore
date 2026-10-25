@@ -7,3 +7,4 @@ dist/
 *.rtl
 *.rtz
 *.tmp
+*.egg-info/
