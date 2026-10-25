@@ -13,7 +13,8 @@ sys.path.insert(0, str(ROOT))
 from rationalis import __version__  # noqa: E402
 
 INCLUDE = ["rationalis", "tests", "tools_build", ".github", "avvio.py", "pyproject.toml", "requirements.txt",
-           "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "Avvia Rationalis.command", "Avvia Rationalis.bat"]
+           "README.md", "README.it.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "Avvia Rationalis.command",
+           "Avvia Rationalis.bat"]
 SKIP_PARTS = {"__pycache__", ".pytest_cache"}
 EXECUTABLE = (".command", ".sh")
 

@@ -1,91 +1,93 @@
 # Rationalis
 
-Gestione e analisi finanziaria personale, familiare e per piccole attività, per **Windows e macOS**.
-Risorse (cassa, conti, carte di credito), movimenti di entrata e uscita, giroconti anche tra valute
-diverse, scadenzario, disponibilità e proiezioni, riepiloghi, grafici, budget, rubrica, agenda e stampe.
-I dati restano sul tuo computer, in un file che puoi proteggere con un codice d'accesso (cifratura AES-256).
+Personal, household and small-business finance manager for **Windows** (macOS from source).
+Track accounts (cash, bank accounts, credit cards), income and expenses, transfers between accounts
+even across currencies, recurring payments, balances and forecasts, summaries, charts, budgets, an
+address book, a diary and printouts. Your data stays on your computer, in a single file that can be
+protected with a password (AES-256 encryption).
 
-Interfaccia in italiano. Licenza [MIT](LICENSE).
+> **Language:** the user interface is in **Italian**. *Leggi in italiano: [README.it.md](README.it.md).*
 
-## Scaricare (Windows)
-Dalla pagina **Releases** del repository scaricare `Rationalis-<versione>-portabile-win64.zip`
-(Windows 10/11, 64 bit), estrarlo e avviare `Rationalis.exe`. Non serve installare nulla: Python e le
-librerie sono inclusi. L'eseguibile non è firmato: al primo avvio SmartScreen chiede «Ulteriori
-informazioni» › «Esegui comunque» (dettagli in [`tools_build/LEGGIMI.txt`](tools_build/LEGGIMI.txt)).
+License: [MIT](LICENSE).
 
-Su **macOS** non ci sono pacchetti pronti: si avvia dal sorgente (vedi sotto) oppure si costruisce l'app
-come descritto in [Pacchetti](#pacchetti).
+## Download (Windows)
+Get `Rationalis-<version>-portabile-win64.zip` from the **Releases** page (Windows 10/11, 64-bit),
+extract it and run `Rationalis.exe`. Nothing to install: Python and all libraries are bundled.
+The executable is not code-signed, so on first launch SmartScreen asks you to confirm
+(“More info” › “Run anyway”).
 
-## Avviare dal sorgente
-Serve Python 3.11 o successivo.
+On **macOS** there is no prebuilt package: run it from source (see below) or build the app as
+described in [Packaging](#packaging).
+
+## Running from source
+Requires Python 3.11 or later.
 ```
 pip install -r requirements.txt
-python -m rationalis [archivio.rtl]
+python -m rationalis [archive.rtl]
 ```
-Su Windows c'è anche `Avvia Rationalis.bat`, su macOS `Avvia Rationalis.command` (al primo avvio crea un
-ambiente `.venv` e installa le librerie).
+On Windows you can also double-click `Avvia Rationalis.bat`; on macOS `Avvia Rationalis.command`
+(on first run it creates a `.venv` and installs the dependencies).
 
-Gli archivi (`.rtl`, database SQLite) vanno di default in `Documenti/Rationalis/archivi`, le copie di
-sicurezza (`.rtz`, zip) in `Documenti/Rationalis/copie`. Lo stesso archivio si apre su Windows e su Mac.
+Archives (`.rtl`, SQLite databases) are stored by default in `Documents/Rationalis/archivi`, backups
+(`.rtz`, zip) in `Documents/Rationalis/copie`. The same archive opens on Windows and macOS.
 
-## Funzioni
-| Area | Contenuto |
+## Features
+| Area | What it does |
 |---|---|
-| Archivi | nuovo (con gruppi e risorse iniziali), apri, recenti, copie di sicurezza e ripristino, copia automatica alla chiusura; gli archivi delle versioni precedenti si aggiornano da soli all'apertura |
-| Codice d'accesso | protezione facoltativa: il file è cifrato (AES-256-GCM, chiave derivata con scrypt) e il database in chiaro esiste solo in memoria; anche le copie di sicurezza restano cifrate |
-| Pagina d'avvio | benvenuto personalizzabile, situazione delle risorse, avvisi del giorno (note dell'agenda, movimenti scaduti), prossime scadenze |
-| Tabelle | gruppi (entrata/uscita/misto) e sottogruppi, risorse e modalità di pagamento, valute con valuta principale, destinazioni, soggetti, descrizioni frequenti, raggruppamenti |
-| Movimenti | griglia mensile per risorsa o per tutte; inserimento con completamento; calcolatrice negli importi (F2); colonne configurabili; ordinamento; taglia/copia/incolla in altro mese; duplica ultimo (F9); inverti saldo (F3); trova (Ctrl+F); vai al nuovo (F12); zoom (F5…F8) |
-| Operazioni | giroconti (1 prelievo, fino a 3 versamenti, controllo dello sbilancio), addebito spese della carta di credito, variazioni automatiche |
-| Scadenzario | movimenti o giroconti ripetuti ogni n giorni/settimane/mesi, giorno del mese, ultimo giorno, «primo lunedì» ecc.; le modifiche toccano solo i movimenti non ancora saldati |
-| Analisi | totali del mese; disponibilità correnti, giornaliere, andamento e proiezione; elenco filtrato con ricerche salvate; riepiloghi su 3 periodi o 12 mesi; grafici; monitor statistiche; budget, prospetto annuale e scostamenti |
-| Strumenti | calcolatrice (percentuali, IVA, cambi, nastro), conversione valute, rendimenti RIN/REN, rubrica, agenda con promemoria, annotazioni del mese, schede libere |
-| Stampe | elenchi e prospetti con anteprima, stampante o PDF; orientamento, margini, linee, adattamento alla pagina; intestazione e piè di pagina con codici `&L &C &R &D &T &P &N &B &I &U` |
-| Import/export | import da Excel; export movimenti in Excel/testo/HTML (reimportabile); ogni prospetto in Excel; import di archivi Danea Professional Manager 5 (vedi sotto) |
+| Archives | create (with starter categories and accounts), open, recent files, backup and restore, automatic backup on close; archives from older versions are upgraded on open |
+| Password | optional protection: the file is encrypted (AES-256-GCM, scrypt key derivation) and the plaintext database only exists in memory; backups stay encrypted too |
+| Start page | customizable welcome, account balances, today's reminders (diary notes, overdue items), upcoming due items |
+| Lists | income/expense categories and subcategories, accounts and payment methods, currencies with a base currency, purposes, people, frequent descriptions, category groupings |
+| Transactions | monthly grid per account or for all accounts; auto-completion; calculator in amount cells (F2); configurable columns; sorting; cut/copy/paste into another month; duplicate last (F9); toggle cleared (F3); find (Ctrl+F); new row (F12); zoom (F5…F8) |
+| Operations | transfers (one source, up to three destinations, balance check), credit-card statement settlement, bulk replace/delete |
+| Scheduler | recurring transactions or transfers every n days/weeks/months, on a day of the month, the last day, “first Monday”, etc.; editing a schedule only touches items not yet cleared |
+| Analysis | monthly totals; current, daily, trend and projected balances; filtered lists with saved searches; summaries over 3 periods or 12 months; charts; statistics monitor; budgets, yearly budget sheet and variance |
+| Tools | calculator (percentages, VAT, exchange rates, paper tape), currency converter, investment returns, address book, diary with reminders, monthly notes, free-form tally cards |
+| Printing | lists and reports with preview, printer or PDF; orientation, margins, grid lines, fit to page; headers and footers with `&L &C &R &D &T &P &N &B &I &U` codes |
+| Import/export | Excel import; transaction export to Excel/text/HTML (re-importable); every report to Excel; import of Danea Professional Manager 5 archives (see below) |
 
-Regole delle analisi: i giroconti non sono né entrate né uscite; salvo filtro diverso contano solo i
-movimenti saldati; importi di risorse diverse sono sommati in valuta principale al cambio corrente. Lo
-scostamento di budget è movimenti − budget con segno: positivo significa meno spesa o più entrata del previsto.
+Analysis rules: transfers are neither income nor expense; unless a filter says otherwise only cleared
+transactions count; amounts from different accounts are summed in the base currency at the current rate.
+Budget variance is actual − budget with sign, so a positive value means less spending or more income than planned.
 
-Non realizzati: inserimento guidato per principianti, stampa dei grafici (si esporta la tabella), guida in
-linea, composizione telefonica via modem (il pulsante ☎ passa il numero all'applicazione telefonica di sistema).
+Not implemented: step-by-step guided entry for beginners, printing charts (export the table instead),
+online help, modem dialing (the ☎ button hands the number to the system phone app).
 
-Nota sul codice d'accesso: proteggendo un archivio già esistente il vecchio file in chiaro viene sostituito,
-ma i suoi dati potrebbero restare recuperabili dal disco con strumenti forensi; per dati delicati conviene
-creare l'archivio e proteggerlo subito.
+A note on passwords: protecting an existing archive replaces the plaintext file, but its old contents may
+still be recoverable from the disk with forensic tools; for sensitive data, create the archive and protect it right away.
 
-## Importazione da Danea Professional Manager 5
-Rationalis può importare gli archivi `.dpm` (e le copie `.dpz` in formato zip) creati con Danea
-Professional Manager 5, così da non perdere i propri dati cambiando programma. L'importatore legge il
-database Microsoft Access/Jet contenuto nel file; la struttura delle tabelle è stata ricostruita ai soli
-fini di interoperabilità e **non è ancora stata verificata su un archivio reale**: tutto ciò che non viene
-riconosciuto è segnalato nel rapporto di importazione invece di andare perso in silenzio. Segnalazioni e
-archivi di prova (senza dati personali) sono benvenuti.
+## Importing Danea Professional Manager 5 archives
+Rationalis can import `.dpm` archives (and `.dpz` backups in zip format) created with Danea Professional
+Manager 5, so users can keep their data when switching programs. The importer reads the Microsoft
+Access/Jet database inside the file; the table layout was reconstructed solely for interoperability and
+**has not yet been verified against a real archive**. Anything not recognized is listed in the import
+report instead of being silently dropped. Bug reports and sample archives (without personal data) are welcome.
 
-## Sviluppo
+## Development
 ```
 pip install -r requirements.txt pytest
 python -m pytest
 ```
-`tests/fixtures/sintetico.dpm` è un database Jet 3 creato appositamente (`tests/fixtures/make_dpm_fixture.ps1`,
-PowerShell a 32 bit) per provare la lettura del formato; non contiene dati reali.
+`tests/fixtures/sintetico.dpm` is a purpose-built Jet 3 database (`tests/fixtures/make_dpm_fixture.ps1`,
+32-bit PowerShell) used to test format reading; it contains no real data.
 
-### Pacchetti
-`python tools_build/build_portable.py` (con `pip install pyinstaller pillow`) crea il pacchetto per il
-sistema su cui gira, lo verifica avviandolo con `--prova-avvio` e produce lo zip (Windows) o `.dmg` e
-`.zip` (macOS). PyInstaller non fa compilazione incrociata: le versioni per Mac si costruiscono su un Mac
-oppure con il flusso [`.github/workflows/build.yml`](.github/workflows/build.yml) di GitHub Actions, che
-costruisce e prova Windows, macOS Apple Silicon e macOS Intel. Su Mac Intel installare le dipendenze con
-`--only-binary=cryptography`.
+Source code identifiers and comments are in Italian.
 
-Modalità portabile: con un file `PORTABILE.txt` accanto all'eseguibile (o accanto a `Rationalis.app`)
-impostazioni e archivi restano in una cartella `Dati` accanto al programma.
+### Packaging
+`python tools_build/build_portable.py` (after `pip install pyinstaller pillow`) builds the package for the
+current OS, smoke-tests it by launching it with `--prova-avvio`, and produces a zip (Windows) or a `.dmg`
+and `.zip` (macOS). PyInstaller does not cross-compile: macOS builds must be made on a Mac or with the
+[`.github/workflows/build.yml`](.github/workflows/build.yml) GitHub Actions workflow, which builds and tests
+Windows, macOS Apple Silicon and macOS Intel. On Intel Macs install dependencies with `--only-binary=cryptography`.
 
-## Licenza e marchi
-Rationalis è distribuito con licenza [MIT](LICENSE). Le librerie incluse nei pacchetti hanno le proprie
-licenze, elencate in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) (in particolare Qt/PySide6, LGPL-3.0).
+Portable mode: with a `PORTABILE.txt` file next to the executable (or next to `Rationalis.app`), settings
+and archives are kept in a `Dati` folder next to the program.
 
-Rationalis è un progetto indipendente, scritto da zero: non contiene codice, testi o grafica di altri
-programmi e **non è affiliato, approvato o sponsorizzato da Danea Soft S.r.l. né da TeamSystem**.
-«Danea», «Danea Professional Manager» ed «Easyfatt» sono marchi dei rispettivi titolari e sono citati
-solo per indicare la compatibilità dei file importabili.
+## License and trademarks
+Rationalis is released under the [MIT](LICENSE) license. Libraries bundled in the packages have their own
+licenses, listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) (notably Qt/PySide6, LGPL-3.0).
+
+Rationalis is an independent project written from scratch: it contains no code, text or graphics from other
+programs and is **not affiliated with, endorsed or sponsored by Danea Soft S.r.l. or TeamSystem**.
+“Danea”, “Danea Professional Manager” and “Easyfatt” are trademarks of their respective owners and are
+mentioned only to describe file compatibility.
