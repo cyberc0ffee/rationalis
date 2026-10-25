@@ -7,18 +7,14 @@ I dati restano sul tuo computer, in un file che puoi proteggere con un codice d'
 
 Interfaccia in italiano. Licenza [MIT](LICENSE).
 
-## Scaricare
-Dalla pagina **Releases** del repository:
+## Scaricare (Windows)
+Dalla pagina **Releases** del repository scaricare `Rationalis-<versione>-portabile-win64.zip`
+(Windows 10/11, 64 bit), estrarlo e avviare `Rationalis.exe`. Non serve installare nulla: Python e le
+librerie sono inclusi. L'eseguibile non è firmato: al primo avvio SmartScreen chiede «Ulteriori
+informazioni» › «Esegui comunque» (dettagli in [`tools_build/LEGGIMI.txt`](tools_build/LEGGIMI.txt)).
 
-| Sistema | File |
-|---|---|
-| Windows 10/11 64 bit | `Rationalis-<versione>-portabile-win64.zip`: estrarre e avviare `Rationalis.exe` |
-| Mac Apple Silicon (M1…M4) | `Rationalis-<versione>-macos-arm64.dmg` |
-| Mac Intel | `Rationalis-<versione>-macos-x86_64.dmg` |
-
-Non serve installare nulla: Python e le librerie sono inclusi. Gli eseguibili non sono firmati: al primo
-avvio Windows SmartScreen chiede «Esegui comunque», macOS richiede clic destro › Apri (dettagli in
-[`tools_build/LEGGIMI.txt`](tools_build/LEGGIMI.txt) e [`tools_build/LEGGIMI_macOS.txt`](tools_build/LEGGIMI_macOS.txt)).
+Su **macOS** non ci sono pacchetti pronti: si avvia dal sorgente (vedi sotto) oppure si costruisce l'app
+come descritto in [Pacchetti](#pacchetti).
 
 ## Avviare dal sorgente
 Serve Python 3.11 o successivo.
